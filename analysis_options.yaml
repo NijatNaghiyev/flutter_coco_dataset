@@ -1,0 +1,13 @@
+analyzer:
+  exclude:
+      - "**/*.g.dart"
+  errors:
+    always_put_required_named_parameters_first: ignore
+include: package:very_good_analysis/analysis_options.yaml
+linter:
+  rules:
+    public_member_api_docs: false
+    directives_ordering: false
+    avoid_positional_boolean_parameters: false
+    lines_longer_than_80_chars: false
+    avoid_catches_without_on_clauses: false
