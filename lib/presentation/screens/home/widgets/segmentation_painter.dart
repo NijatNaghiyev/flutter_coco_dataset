@@ -23,7 +23,17 @@ class SegmentationPainter extends CustomPainter {
       size.width / image.width,
       size.height / image.height,
     );
+
+    // Scale the image to fit the canvas
+    final scaledWidth = image.width * scale;
+    final scaledHeight = image.height * scale;
+
+    // Center the image on the canvas
+    final dx = (size.width - scaledWidth) / 2;
+    final dy = (size.height - scaledHeight) / 2;
+
     canvas
+      ..translate(dx, dy)
       ..scale(scale)
       ..drawImage(image, Offset.zero, Paint());
 

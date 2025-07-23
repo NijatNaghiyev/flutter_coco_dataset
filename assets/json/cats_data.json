@@ -1,0 +1,402 @@
+[
+    {
+        "id": 1,
+        "name": "person",
+        "supercatId": 9
+    },
+    {
+        "id": 2,
+        "name": "bicycle",
+        "supercatId": 11
+    },
+    {
+        "id": 3,
+        "name": "car",
+        "supercatId": 11
+    },
+    {
+        "id": 4,
+        "name": "motorcycle",
+        "supercatId": 11
+    },
+    {
+        "id": 5,
+        "name": "airplane",
+        "supercatId": 11
+    },
+    {
+        "id": 6,
+        "name": "bus",
+        "supercatId": 11
+    },
+    {
+        "id": 7,
+        "name": "train",
+        "supercatId": 11
+    },
+    {
+        "id": 8,
+        "name": "truck",
+        "supercatId": 11
+    },
+    {
+        "id": 9,
+        "name": "boat",
+        "supercatId": 11
+    },
+    {
+        "id": 10,
+        "name": "traffic light",
+        "supercatId": 8
+    },
+    {
+        "id": 11,
+        "name": "fire hydrant",
+        "supercatId": 8
+    },
+    {
+        "id": 13,
+        "name": "stop sign",
+        "supercatId": 8
+    },
+    {
+        "id": 14,
+        "name": "parking meter",
+        "supercatId": 8
+    },
+    {
+        "id": 15,
+        "name": "bench",
+        "supercatId": 8
+    },
+    {
+        "id": 16,
+        "name": "bird",
+        "supercatId": 1
+    },
+    {
+        "id": 17,
+        "name": "cat",
+        "supercatId": 1
+    },
+    {
+        "id": 18,
+        "name": "dog",
+        "supercatId": 1
+    },
+    {
+        "id": 19,
+        "name": "horse",
+        "supercatId": 1
+    },
+    {
+        "id": 20,
+        "name": "sheep",
+        "supercatId": 1
+    },
+    {
+        "id": 21,
+        "name": "cow",
+        "supercatId": 1
+    },
+    {
+        "id": 22,
+        "name": "elephant",
+        "supercatId": 1
+    },
+    {
+        "id": 23,
+        "name": "bear",
+        "supercatId": 1
+    },
+    {
+        "id": 24,
+        "name": "zebra",
+        "supercatId": 1
+    },
+    {
+        "id": 25,
+        "name": "giraffe",
+        "supercatId": 1
+    },
+    {
+        "id": 27,
+        "name": "backpack",
+        "supercatId": 0
+    },
+    {
+        "id": 28,
+        "name": "umbrella",
+        "supercatId": 0
+    },
+    {
+        "id": 31,
+        "name": "handbag",
+        "supercatId": 0
+    },
+    {
+        "id": 32,
+        "name": "tie",
+        "supercatId": 0
+    },
+    {
+        "id": 33,
+        "name": "suitcase",
+        "supercatId": 0
+    },
+    {
+        "id": 34,
+        "name": "frisbee",
+        "supercatId": 10
+    },
+    {
+        "id": 35,
+        "name": "skis",
+        "supercatId": 10
+    },
+    {
+        "id": 36,
+        "name": "snowboard",
+        "supercatId": 10
+    },
+    {
+        "id": 37,
+        "name": "sports ball",
+        "supercatId": 10
+    },
+    {
+        "id": 38,
+        "name": "kite",
+        "supercatId": 10
+    },
+    {
+        "id": 39,
+        "name": "baseball bat",
+        "supercatId": 10
+    },
+    {
+        "id": 40,
+        "name": "baseball glove",
+        "supercatId": 10
+    },
+    {
+        "id": 41,
+        "name": "skateboard",
+        "supercatId": 10
+    },
+    {
+        "id": 42,
+        "name": "surfboard",
+        "supercatId": 10
+    },
+    {
+        "id": 43,
+        "name": "tennis racket",
+        "supercatId": 10
+    },
+    {
+        "id": 44,
+        "name": "bottle",
+        "supercatId": 7
+    },
+    {
+        "id": 46,
+        "name": "wine glass",
+        "supercatId": 7
+    },
+    {
+        "id": 47,
+        "name": "cup",
+        "supercatId": 7
+    },
+    {
+        "id": 48,
+        "name": "fork",
+        "supercatId": 7
+    },
+    {
+        "id": 49,
+        "name": "knife",
+        "supercatId": 7
+    },
+    {
+        "id": 50,
+        "name": "spoon",
+        "supercatId": 7
+    },
+    {
+        "id": 51,
+        "name": "bowl",
+        "supercatId": 7
+    },
+    {
+        "id": 52,
+        "name": "banana",
+        "supercatId": 4
+    },
+    {
+        "id": 53,
+        "name": "apple",
+        "supercatId": 4
+    },
+    {
+        "id": 54,
+        "name": "sandwich",
+        "supercatId": 4
+    },
+    {
+        "id": 55,
+        "name": "orange",
+        "supercatId": 4
+    },
+    {
+        "id": 56,
+        "name": "broccoli",
+        "supercatId": 4
+    },
+    {
+        "id": 57,
+        "name": "carrot",
+        "supercatId": 4
+    },
+    {
+        "id": 58,
+        "name": "hot dog",
+        "supercatId": 4
+    },
+    {
+        "id": 59,
+        "name": "pizza",
+        "supercatId": 4
+    },
+    {
+        "id": 60,
+        "name": "donut",
+        "supercatId": 4
+    },
+    {
+        "id": 61,
+        "name": "cake",
+        "supercatId": 4
+    },
+    {
+        "id": 62,
+        "name": "chair",
+        "supercatId": 5
+    },
+    {
+        "id": 63,
+        "name": "couch",
+        "supercatId": 5
+    },
+    {
+        "id": 64,
+        "name": "potted plant",
+        "supercatId": 5
+    },
+    {
+        "id": 65,
+        "name": "bed",
+        "supercatId": 5
+    },
+    {
+        "id": 67,
+        "name": "dining table",
+        "supercatId": 5
+    },
+    {
+        "id": 70,
+        "name": "toilet",
+        "supercatId": 5
+    },
+    {
+        "id": 72,
+        "name": "tv",
+        "supercatId": 3
+    },
+    {
+        "id": 73,
+        "name": "laptop",
+        "supercatId": 3
+    },
+    {
+        "id": 74,
+        "name": "mouse",
+        "supercatId": 3
+    },
+    {
+        "id": 75,
+        "name": "remote",
+        "supercatId": 3
+    },
+    {
+        "id": 76,
+        "name": "keyboard",
+        "supercatId": 3
+    },
+    {
+        "id": 77,
+        "name": "cell phone",
+        "supercatId": 3
+    },
+    {
+        "id": 78,
+        "name": "microwave",
+        "supercatId": 2
+    },
+    {
+        "id": 79,
+        "name": "oven",
+        "supercatId": 2
+    },
+    {
+        "id": 80,
+        "name": "toaster",
+        "supercatId": 2
+    },
+    {
+        "id": 81,
+        "name": "sink",
+        "supercatId": 2
+    },
+    {
+        "id": 82,
+        "name": "refrigerator",
+        "supercatId": 2
+    },
+    {
+        "id": 84,
+        "name": "book",
+        "supercatId": 6
+    },
+    {
+        "id": 85,
+        "name": "clock",
+        "supercatId": 6
+    },
+    {
+        "id": 86,
+        "name": "vase",
+        "supercatId": 6
+    },
+    {
+        "id": 87,
+        "name": "scissors",
+        "supercatId": 6
+    },
+    {
+        "id": 88,
+        "name": "teddy bear",
+        "supercatId": 6
+    },
+    {
+        "id": 89,
+        "name": "hair drier",
+        "supercatId": 6
+    },
+    {
+        "id": 90,
+        "name": "toothbrush",
+        "supercatId": 6
+    }
+]
