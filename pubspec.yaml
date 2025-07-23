@@ -8,36 +8,25 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
+  cached_network_image: ^3.4.1
+  cupertino_icons: ^1.0.8
+  dio: ^5.8.0+1
+  equatable: ^2.0.7
   flutter:
     sdk: flutter
-
-  #? State Management
   flutter_bloc: ^9.1.0
-  equatable: ^2.0.7
-
-  #? Utilities
-  share_plus: ^11.0.0
-  logger: ^2.5.0
-
-
-  #? Network
-  dio: ^5.8.0+1
-  pretty_dio_logger: ^1.4.0
-
-  #? Cache & Storage
-  cached_network_image: ^3.4.1
-
-  #? UI & Styling
   flutter_screenutil: ^5.9.3
-  cupertino_icons: ^1.0.8
+  logger: ^2.5.0
+  pretty_dio_logger: ^1.4.0
+  share_plus: ^11.0.0
+  url_launcher: ^6.3.2
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
 
   flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
   very_good_analysis: ^9.0.0
-
 
 flutter:
   uses-material-design: true
@@ -46,13 +35,10 @@ flutter:
   assets:
     - assets/
     - assets/json/
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
