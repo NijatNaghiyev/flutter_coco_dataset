@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_coco_dataset/cubits/coco/coco_cubit.dart';
 import 'package:flutter_coco_dataset/features/data/models/images_model.dart';
-import 'package:flutter_coco_dataset/features/domain/entities/instance_entity.dart';
+import 'package:flutter_coco_dataset/presentation/screens/home/mixins/data_set_item_mixin.dart';
 import 'package:flutter_coco_dataset/presentation/screens/home/widgets/data_set_cat_item.dart';
 import 'package:flutter_coco_dataset/presentation/screens/home/widgets/segmentation_painter.dart';
-import 'package:flutter_coco_dataset/utils/app/app_logger.dart';
-import 'dart:ui' as ui;
-
-import 'package:flutter_coco_dataset/utils/helper/get_ui_image_from_network.dart';
-import 'package:flutter_coco_dataset/utils/helper/throttler.dart';
 import 'package:flutter_coco_dataset/utils/helper/url_launcher_helper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,89 +17,19 @@ class DataSetItem extends StatefulWidget {
   State<DataSetItem> createState() => _DataSetItemState();
 }
 
-class _DataSetItemState extends State<DataSetItem> {
-  final ValueNotifier<bool> _isLoadingNotifier = ValueNotifier<bool>(false);
-  final ValueNotifier<bool> _showImageUrl = ValueNotifier<bool>(false);
-  final ValueNotifier<bool> _showCaptions = ValueNotifier<bool>(false);
-
-  ui.Image? _image;
-
-  int? filterCatId;
-
-  final Throttler _throttler = Throttler(
-    milliseconds: 500,
-  );
-
+class _DataSetItemState extends State<DataSetItem> with DataSetItemMixin {
   @override
   void initState() {
     super.initState();
-    _loadImage();
+    loadImage();
   }
 
   @override
   void dispose() {
-    _isLoadingNotifier.dispose();
-    _showImageUrl.dispose();
-    _showCaptions.dispose();
+    isLoadingNotifier.dispose();
+    showImageUrl.dispose();
+    showCaptions.dispose();
     super.dispose();
-  }
-
-  Future<void> _loadImage() async {
-    final state = context.read<CocoCubit>().state;
-    if (state.uiImage.containsKey(widget.imagesModel.id)) {
-      _image = state.uiImage[widget.imagesModel.id];
-      _isLoadingNotifier.value = false;
-      return;
-    }
-
-    _isLoadingNotifier.value = true;
-    try {
-      // Simulate image loading
-      _image = await loadNetworkImageFromNetwork(
-        widget.imagesModel.flickrUrl ?? '',
-      );
-
-      AppLogger.i('Image loaded for index: ${widget.imagesModel.flickrUrl}');
-
-      context.read<CocoCubit>().addUIImage(
-        widget.imagesModel.id ?? 0,
-        _image!,
-      );
-    } catch (e) {
-      AppLogger.e('Error loading image: $e');
-    } finally {
-      _isLoadingNotifier.value = false;
-    }
-  }
-
-  List<InstanceEntity> _getVisibleSegmentations(CocoState state) {
-    final data = state.instanceResponseModel.data
-        .where((e) => e.imageId == widget.imagesModel.id)
-        .toList();
-
-    return data;
-  }
-
-  Set<int> _getVisibleIds(CocoState state) {
-    final data = state.instanceResponseModel.data
-        .where(
-          (e) =>
-              e.imageId == widget.imagesModel.id &&
-              (filterCatId == null || e.categoryId == filterCatId),
-        )
-        .map((e) => e.categoryId)
-        .toSet();
-
-    return data;
-  }
-
-  Set<int> _getVisibleCats(CocoState state) {
-    final data = state.instanceResponseModel.data
-        .where((e) => e.imageId == widget.imagesModel.id)
-        .map((e) => e.categoryId)
-        .toSet();
-
-    return data;
   }
 
   @override
@@ -112,13 +37,13 @@ class _DataSetItemState extends State<DataSetItem> {
     final state = context.read<CocoCubit>().state;
 
     return ValueListenableBuilder<bool>(
-      valueListenable: _isLoadingNotifier,
+      valueListenable: isLoadingNotifier,
       builder: (context, isLoading, _) {
         if (isLoading) {
           return const Center(child: CircularProgressIndicator());
         }
 
-        if (_image == null) {
+        if (image == null) {
           return const Center(child: Text('Image not available'));
         }
 
@@ -129,23 +54,24 @@ class _DataSetItemState extends State<DataSetItem> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //? Image Buttons
               Wrap(
                 spacing: 8.w,
                 runSpacing: 4.h,
                 children: [
                   _BasicDataSetItem(
                     () {
-                      _showImageUrl.value = !_showImageUrl.value;
+                      showImageUrl.value = !showImageUrl.value;
                     },
                     Icons.add_link_rounded,
                   ),
                   _BasicDataSetItem(
                     () {
-                      _showCaptions.value = !_showCaptions.value;
+                      showCaptions.value = !showCaptions.value;
                     },
                     Icons.format_color_text_sharp,
                   ),
-                  ..._getVisibleCats(state).map(
+                  ...getVisibleCats(state).map(
                     (e) => DataSetCatItem(
                       isSelected: filterCatId == e,
                       id: e,
@@ -163,6 +89,7 @@ class _DataSetItemState extends State<DataSetItem> {
                 ],
               ),
 
+              //? Image URLs
               AnimatedSize(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
@@ -171,7 +98,7 @@ class _DataSetItemState extends State<DataSetItem> {
                   spacing: 8.h,
                   children: [
                     _ItemImageUrl(() {
-                      _throttler.call(
+                      throttler.call(
                         () {
                           UrlLauncherHelper.openInAppWebView(
                             widget.imagesModel.flickrUrl ?? '',
@@ -182,7 +109,7 @@ class _DataSetItemState extends State<DataSetItem> {
 
                     _ItemImageUrl(
                       () {
-                        _throttler.call(
+                        throttler.call(
                           () {
                             UrlLauncherHelper.openInAppWebView(
                               widget.imagesModel.cocoUrl ?? '',
@@ -196,12 +123,13 @@ class _DataSetItemState extends State<DataSetItem> {
                 ),
               ),
 
+              //? Image Captions
               AnimatedSize(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
                 alignment: Alignment.topCenter,
                 child: ValueListenableBuilder(
-                  valueListenable: _showCaptions,
+                  valueListenable: showCaptions,
                   builder: (context, value, child) {
                     if (!value) {
                       return const SizedBox.shrink();
@@ -219,15 +147,16 @@ class _DataSetItemState extends State<DataSetItem> {
                 ),
               ),
 
+              //? Segmentation Painter
               RepaintBoundary(
                 child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: CustomPaint(
                     size: Size(400.w, 300.h),
                     painter: SegmentationPainter(
-                      image: _image!,
-                      segmentations: _getVisibleSegmentations(state),
-                      visibleIds: _getVisibleIds(state),
+                      image: image!,
+                      segmentations: getVisibleSegmentations(state),
+                      visibleIds: getVisibleIds(state),
                     ),
                   ),
                 ),
@@ -241,7 +170,7 @@ class _DataSetItemState extends State<DataSetItem> {
 
   Widget _ItemImageUrl(VoidCallback onTap, String imageUrl) {
     return ValueListenableBuilder(
-      valueListenable: _showImageUrl,
+      valueListenable: showImageUrl,
       builder: (context, value, child) {
         if (!value) {
           return const SizedBox.shrink();
