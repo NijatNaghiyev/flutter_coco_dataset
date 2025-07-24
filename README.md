@@ -2,6 +2,10 @@
 
 A Flutter application that provides an interactive interface to explore the Microsoft COCO (Common Objects in Context) dataset. The app allows users to browse categories, search for images, view segmentation masks, and read image captions.
 
+## 🌐 Demo
+
+**Live Demo**: [https://coco-dataset-flutter.web.app](https://coco-dataset-flutter.web.app)
+
 ## 🌟 Features
 
 ### Core Functionality
@@ -45,10 +49,10 @@ lib/
 │   ├── screens/                # UI screens
 │   └── widgets/                # Reusable widgets
 └── utils/                      # Utilities
-    ├── app/                    # App constants & logger
-    ├── enum/                   # Enumerations
-    ├── extension/              # Extensions
-    └── helper/                 # Helper classes
+   ├── app/                    # App constants & logger
+   ├── enum/                   # Enumerations
+   ├── extension/              # Extensions
+   └── helper/                 # Helper classes
 ```
 
 ## 🚀 Getting Started
@@ -260,3 +264,4 @@ This project is available under the MIT License. See the LICENSE file for more d
 ---
 
 *Built with ❤️ using Flutter*
+
