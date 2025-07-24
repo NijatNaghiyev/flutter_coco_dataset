@@ -99,7 +99,7 @@ class CocoCubit extends BaseCubit<CocoState> {
 
       safeEmit(
         state.copyWith(
-          imagesId: UnmodifiableListView<int>(imageIds),
+          imagesId: UnmodifiableListView<int>(imageIds.shuffled()),
         ),
       );
 
