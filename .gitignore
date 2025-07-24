@@ -71,3 +71,14 @@ app.*.map.json
 
 # ENV
 env.g.dart
+
+# Firebase related
+google-services.json
+GoogleService-Info.plist
+firebase_options.dart
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+.firebaserc
+firebase.json
